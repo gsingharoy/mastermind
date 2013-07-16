@@ -14,7 +14,7 @@
 			Run the command "python mastermind.py your_input_file_name" where your_input_file_name is the name of the input file
 		</li>	
 		<li>
-			3 input files are already there in the input folder. So you can run "<b>python mastermind input1.txt</b>" , "<b>python mastermind input2.txt</b>" and "<b>python mastermind input3.txt</b>". 
+			3 input files are already there in the input folder. So you can run "<b>python mastermind.py input1.txt</b>" , "<b>python mastermind.py input2.txt</b>" and "<b>python mastermind.py input3.txt</b>". 
 		</li>	
 		<li> 
 			input1.txt is a short string where the length is 10 and the number of colors,k = 4.
