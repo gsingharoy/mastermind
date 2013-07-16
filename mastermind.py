@@ -133,7 +133,7 @@ def check_vals():
 def initialize():
 	global y, x, i, z, n, k, s, t
 	#f = open(sys.argv[1])
-	f = open("input.txt")
+	f = open("input/input.txt")
 	lines = f.readlines()
 	f.close
 	lines[0] = lines[0].replace("\n","").replace(" ","").replace("z","").replace("=","")
