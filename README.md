@@ -26,6 +26,8 @@
 			input3.txt is a very long string where length is around 3600 and number of colors, k = 10.
 		</li>
 	</ul>	
+	<br>
+	Click <a href="http://en.wikipedia.org/wiki/Mastermind_(board_game)">here</a> to learn more about the original Mastermind game.
 </MTMarkdownOptions>
 
 
