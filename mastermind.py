@@ -47,7 +47,7 @@ def b_eq(b_s):
 			guess += y[0][a]
 	return eq(z,guess)		
 
-#this function 
+#this function guesses a single color with the position. The rest of the positions are copied from the sampling string, y
 def single_b_eq(color,pos):
 	guess = ""
 	for a in range(0,n):
@@ -132,7 +132,6 @@ def check_vals():
 #This function initializes the values
 def initialize():
 	global y, x, i, z, n, k, s, t
-	#f = open(sys.argv[1])
 	f = open("input/"+sys.argv[1])
 	lines = f.readlines()
 	f.close
