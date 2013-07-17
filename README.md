@@ -20,10 +20,10 @@
 			input1.txt is a short string where the length is 10 and the number of colors,k = 4.
 		</li>	
 		<li>
-			input2.txt is a very long string where length is around 3600 and number of colors, k = 4.
+			input2.txt is a very long string where length is 4000 and number of colors, k = 4.
 		</li>
 		<li>
-			input3.txt is a very long string where length is around 3600 and number of colors, k = 10.
+			input3.txt is a very long string where length is 4000 and number of colors, k = 10.
 		</li>
 	</ul>	
 	<br>
