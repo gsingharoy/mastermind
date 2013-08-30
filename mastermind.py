@@ -142,12 +142,14 @@ def get_intelligent_random_guess(possible_colors_array,min_delta):
 			if x_ind[1] == min_delta:
 				if x_ind[0][len(result)] in temp:
 					temp.remove(x_ind[0][len(result)])
-		result.append(temp[random.randint(0,len(temp)-1)])
+		if len(temp) == 0:
+			result = []
+		else:				
+			result.append(temp[random.randint(0,len(temp)-1)])
 
 	result_block = ""
 	for r in result:
-		result_block += str(r)
-	print result_block	
+		result_block += str(r)	
 	return result_block			
 				
 def get_array_of_colors(poss_colors):
@@ -281,4 +283,4 @@ start_mastermind()
 end_time = datetime.datetime.now()
 print "Total time taken : " + get_time_diff(start_time,end_time)
 print "Total guesses : " + str(total_guesses)
-print is_new
+
