@@ -22,7 +22,7 @@ s = 0 #This is the block size
 t = 0 #This will be the max number of guesses and its responses we can store in the memory x
 i = 0 #This is the iterator for the block to find the secret code for that block
 total_guesses = 1
-
+is_new = False
 def get_time_diff(start_time,end_time):
 	diff = (end_time - start_time).total_seconds()
 	return str(diff) +"s"
@@ -150,6 +150,11 @@ def initialize():
 		new_y += "0" #Initializing y
 	y.append(new_y)	
 	y.append(eq(z,y[0]))
+	try:
+		if sys.argv[2] == "--n":
+			is_true = True
+	except:	
+		print "Original algorithm ... "				
 
 
 #This function starts the mastermind guessing game
@@ -201,10 +206,12 @@ def start_mastermind():
 						elif individual_x[1] == min_delta:
 							individual_x[0] = "$" #marked for forgetting/deletion
 						x_counter += 1	
-					forget_x()				
-					s_consistent =  generate_s_consistent(possible_colors)
+					forget_x()
+					if is_new == False:				
+						s_consistent =  generate_s_consistent(possible_colors)
 					while True: #In this block, we try to randomly guess the correct sequence in the block with the values from s_consistent
-						curr_block_guess = s_consistent[random.randint(0,len(s_consistent)-1)]
+						if is_new == False:
+							curr_block_guess = s_consistent[random.randint(0,len(s_consistent)-1)]
 						if is_block_present(curr_block_guess) == False:
 							total_guesses+=1
 							if len(x) == t:
