@@ -21,7 +21,7 @@ x = [] #This the second memory where we store carole's responses. Now for simpli
 s = 0 #This is the block size
 t = 0 #This will be the max number of guesses and its responses we can store in the memory x
 i = 0 #This is the iterator for the block to find the secret code for that block
-
+total_guesses = 1
 
 def get_time_diff(start_time,end_time):
 	diff = (end_time - start_time).total_seconds()
@@ -154,7 +154,7 @@ def initialize():
 
 #This function starts the mastermind guessing game
 def start_mastermind():
-	global y, x, i
+	global y, x, i,total_guesses
 	initialize()
 	if check_vals() == True:
 		continue_loop = True
@@ -165,6 +165,7 @@ def start_mastermind():
 				delta_total = 0
 				for k_counter in range(1,k):
 					guess_str = ""
+					total_guesses += 1
 					for s_counter in range(0,s):
 						guess_str += str(k_counter)
 					x.append([guess_str, b_eq(guess_str)])
@@ -205,6 +206,7 @@ def start_mastermind():
 					while True: #In this block, we try to randomly guess the correct sequence in the block with the values from s_consistent
 						curr_block_guess = s_consistent[random.randint(0,len(s_consistent)-1)]
 						if is_block_present(curr_block_guess) == False:
+							total_guesses+=1
 							if len(x) == t:
 								x.pop() 
 							x.append([curr_block_guess,b_eq(curr_block_guess)])
@@ -222,6 +224,7 @@ def start_mastermind():
 					while True:
 						curr_color = str(random.randint(1,k-1))
 						if is_block_present(curr_color) == False:
+							total_guesses += 1
 							if len(x) == t:
 								x.pop()
 							x.append([curr_color,single_b_eq(curr_color,i_counter)])
@@ -238,4 +241,5 @@ start_time = datetime.datetime.now()
 start_mastermind()
 end_time = datetime.datetime.now()
 print "Total time taken : " + get_time_diff(start_time,end_time)
+print "Total guesses : " + str(total_guesses)
 
