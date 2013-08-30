@@ -129,9 +129,36 @@ def check_vals():
 				s = 4						
 	
 	return result
+
+def get_intelligent_random_guess(possible_colors_array,min_delta):
+	result = []
+	while len(result) != len(possible_colors_array):
+		temp = []
+		for p in possible_colors_array:
+			temp.append(p)
+		for r in result:
+			temp.remove(r)
+		for x_ind in x:
+			if x_ind[1] == min_delta:
+				if x_ind[0][len(result)] in temp:
+					temp.remove(x_ind[0][len(result)])
+		result.append(temp[random.randint(0,len(temp)-1)])
+
+	result_block = ""
+	for r in result:
+		result_block += str(r)
+	print result_block	
+	return result_block			
+				
+def get_array_of_colors(poss_colors):
+	result = []
+	for pc in poss_colors:
+		result.append(pc)
+	return result	
+
 #This function initializes the values
 def initialize():
-	global y, x, i, z, n, k, s, t
+	global y, x, i, z, n, k, s, t, is_new
 	f = open("input/"+sys.argv[1])
 	lines = f.readlines()
 	f.close
@@ -152,7 +179,8 @@ def initialize():
 	y.append(eq(z,y[0]))
 	try:
 		if sys.argv[2] == "--n":
-			is_true = True
+			is_new = True
+			print "New algorithm ... "
 	except:	
 		print "Original algorithm ... "				
 
@@ -209,9 +237,13 @@ def start_mastermind():
 					forget_x()
 					if is_new == False:				
 						s_consistent =  generate_s_consistent(possible_colors)
+					else:
+						possible_colors_array = get_array_of_colors(possible_colors)
 					while True: #In this block, we try to randomly guess the correct sequence in the block with the values from s_consistent
 						if is_new == False:
 							curr_block_guess = s_consistent[random.randint(0,len(s_consistent)-1)]
+						else:
+							curr_block_guess = get_intelligent_random_guess(possible_colors_array,min_delta)	
 						if is_block_present(curr_block_guess) == False:
 							total_guesses+=1
 							if len(x) == t:
@@ -249,4 +281,4 @@ start_mastermind()
 end_time = datetime.datetime.now()
 print "Total time taken : " + get_time_diff(start_time,end_time)
 print "Total guesses : " + str(total_guesses)
-
+print is_new
