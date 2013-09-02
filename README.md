@@ -25,7 +25,9 @@
 		<li>
 			input3.txt is a very long string where length is 4000 and number of colors, k = 10.
 		</li>
-	</ul>	
+	</ul>
+	<br>
+	To run the modified algorithm which has an intelligent guess function, run "python mastermind.py &lt;input_file&gt; --n"	
 	<br>
 	Click <a href="http://en.wikipedia.org/wiki/Mastermind_(board_game)">here</a> to learn more about the original Mastermind game.
 </MTMarkdownOptions>
